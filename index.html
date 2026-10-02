@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 
 <body>
@@ -77,8 +77,6 @@
         <ul class="nav-links">
             <li><a href="#hero"><i class="fa-solid fa-heart"></i> Home</a></li>
             <li><a href="#letter-section"><i class="fa-solid fa-envelope-open-text"></i> Love Letter</a></li>
-            <li><a href="#coupons"><i class="fa-solid fa-ticket"></i> Coupons</a></li>
-            <li><a href="#quiz"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
         </ul>
     </nav>
 
@@ -180,77 +178,6 @@
             </div>
         </section>
 
-        <!-- Redeemable Love Coupons Section -->
-        <section id="coupons" class="section-container">
-            <div class="section-header">
-                <h2><i class="fa-solid fa-ticket-simple"></i> Boyfriend Day Love Coupons</h2>
-                <p>Click "Redeem" to claim your special perks! Valid forever with zero expiration date.</p>
-            </div>
-
-            <div class="coupons-grid">
-                <!-- Coupon 1 -->
-                <div class="coupon-card glass-card">
-                    <div class="coupon-badge">OFFICIAL PASS</div>
-                    <div class="coupon-icon"><i class="fa-solid fa-spa"></i></div>
-                    <h3>1x Full Back & Shoulder Massage</h3>
-                    <p>Relaxing massage with warm oil & favorite music.</p>
-                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Full Massage')">Redeem Coupon
-                        🎟️</button>
-                </div>
-
-                <!-- Coupon 2 -->
-                <div class="coupon-card glass-card">
-                    <div class="coupon-badge">OFFICIAL PASS</div>
-                    <div class="coupon-icon"><i class="fa-solid fa-film"></i></div>
-                    <h3>1x Movie Night & Favorite Snacks</h3>
-                    <p>You pick the movie, I get your favorite treats!</p>
-                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Movie Night')">Redeem Coupon
-                        🎟️</button>
-                </div>
-
-                <!-- Coupon 3 -->
-                <div class="coupon-card glass-card">
-                    <div class="coupon-badge">SPECIAL PASS</div>
-                    <div class="coupon-icon"><i class="fa-solid fa-trophy"></i></div>
-                    <h3>1x Win Any Playful Argument</h3>
-                    <p>Instant victory ticket! No questions asked.</p>
-                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Win Any Argument')">Redeem Coupon
-                        🎟️</button>
-                </div>
-
-                <!-- Coupon 4 -->
-                <div class="coupon-card glass-card">
-                    <div class="coupon-badge">VIP PASS</div>
-                    <div class="coupon-icon"><i class="fa-solid fa-utensils"></i></div>
-                    <h3>1x Favorite Homemade Meal</h3>
-                    <p>Cooked with 100% love & extra dessert!</p>
-                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Homemade Meal')">Redeem Coupon
-                        🎟️</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Love Quiz Section -->
-        <section id="quiz" class="section-container">
-            <div class="section-header">
-                <h2><i class="fa-solid fa-heart-pulse"></i> "How Well Do You Know Us?" Quiz</h2>
-                <p>Let's test your love trivia! Pick your answers below.</p>
-            </div>
-
-            <div class="quiz-card glass-card" id="quizContainer">
-                <div class="quiz-progress">
-                    <span id="quizStepText">Question 1 of 3</span>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" id="quizProgressBar"></div>
-                    </div>
-                </div>
-
-                <div class="quiz-body" id="quizBody">
-                    <!-- Dynamic Question Loaded Here -->
-                </div>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
@@ -316,7 +243,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 
 </html>
