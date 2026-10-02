@@ -183,62 +183,94 @@ function initAudioSynthesizer() {
         isMusicPlaying = !isMusicPlaying;
 
         if (isMusicPlaying) {
-            musicLabel.textContent = 'Romantic Melody: ON';
+            musicLabel.textContent = 'Tum Ho Toh 🎵: ON';
             soundWave.classList.remove('hidden');
-            startRomanticMelody();
+            startTumHoTohMelody();
         } else {
-            musicLabel.textContent = 'Romantic Melody: OFF';
+            musicLabel.textContent = 'Tum Ho Toh 🎵: OFF';
             soundWave.classList.add('hidden');
-            stopRomanticMelody();
+            stopTumHoTohMelody();
         }
     });
 }
 
-const romanticChords = [
-    [261.63, 329.63, 392.00, 493.88], // C maj 7
-    [220.00, 261.63, 329.63, 392.00], // A min 7
-    [174.61, 220.00, 261.63, 329.63], // F maj 7
-    [196.00, 246.94, 293.66, 349.23]  // G 7
+// "Tum Ho Toh" Piano Melody Sequence
+const tumHoTohMelody = [
+    { freq: 329.63, delay: 0 },    // E4 - Tum
+    { freq: 392.00, delay: 400 },  // G4 - ho
+    { freq: 440.00, delay: 800 },  // A4 - toh
+    { freq: 493.88, delay: 1200 }, // B4 - gungunata
+    { freq: 440.00, delay: 1800 }, // A4 - hai
+    { freq: 392.00, delay: 2200 }, // G4 - dil
+    { freq: 329.63, delay: 2600 }, // E4
+
+    { freq: 329.63, delay: 3400 }, // E4 - Tum
+    { freq: 392.00, delay: 3800 }, // G4 - ho
+    { freq: 440.00, delay: 4200 }, // A4 - toh
+    { freq: 523.25, delay: 4600 }, // C5 - muskurati
+    { freq: 493.88, delay: 5200 }, // B4 - hain
+    { freq: 440.00, delay: 5600 }, // A4 - raatein
+    { freq: 392.00, delay: 6000 }  // G4
 ];
 
-function startRomanticMelody() {
-    let chordIdx = 0;
-    playChord(romanticChords[chordIdx]);
+const tumHoTohChords = [
+    [261.63, 329.63, 392.00], // C Maj
+    [220.00, 261.63, 329.63], // A Min
+    [174.61, 220.00, 261.63], // F Maj
+    [196.00, 246.94, 392.00]  // G Maj
+];
+
+function startTumHoTohMelody() {
+    let noteLoop = 0;
+    playTumHoTohCycle();
 
     musicInterval = setInterval(() => {
-        chordIdx = (chordIdx + 1) % romanticChords.length;
-        playChord(romanticChords[chordIdx]);
-    }, 3200);
+        playTumHoTohCycle();
+    }, 6800);
 }
 
-function stopRomanticMelody() {
+function stopTumHoTohMelody() {
     if (musicInterval) clearInterval(musicInterval);
 }
 
-function playChord(frequencies) {
+function playTumHoTohCycle() {
     if (!audioCtx || !isMusicPlaying) return;
 
-    frequencies.forEach((freq, i) => {
+    // Play Background Soft Chords
+    tumHoTohChords.forEach((chord, idx) => {
         setTimeout(() => {
             if (!isMusicPlaying) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-
-            osc.type = 'sine';
-            osc.frequency.value = freq;
-
-            const now = audioCtx.currentTime;
-            gain.gain.setValueAtTime(0.001, now);
-            gain.gain.linearRampToValueAtTime(0.06, now + 0.4);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
-
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            osc.start(now);
-            osc.stop(now + 3.0);
-        }, i * 200);
+            chord.forEach(freq => playTone(freq, 2.2, 0.04, 'sine'));
+        }, idx * 1600);
     });
+
+    // Play Melody Notes
+    tumHoTohMelody.forEach(item => {
+        setTimeout(() => {
+            if (!isMusicPlaying) return;
+            playTone(item.freq, 0.9, 0.08, 'triangle');
+        }, item.delay);
+    });
+}
+
+function playTone(freq, duration, volume, type = 'sine') {
+    if (!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = type;
+    osc.frequency.value = freq;
+
+    const now = audioCtx.currentTime;
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(volume, now + 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(now);
+    osc.stop(now + duration + 0.1);
 }
 
 function playChimeEffect() {
