@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy National Boyfriend Day, My Love! ❤️</title>
+    <meta name="description"
+        content="A special romantic surprise website dedicated to the most amazing boyfriend in the world!">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Cute Aesthetic Intro Splash Screen Question -->
+    <div id="introSplash" class="intro-splash-overlay">
+        <div class="intro-card glass-card">
+            <div class="intro-badge"><i class="fa-solid fa-heart"></i> IMPORTANT QUESTION FOR YOU <i
+                    class="fa-solid fa-heart"></i></div>
+
+            <div class="cute-heart-graphics">
+                <span class="pulse-heart-big">💖</span>
+                <span class="sparkle-star star-1">✨</span>
+                <span class="sparkle-star star-2">✨</span>
+            </div>
+
+            <h1 class="intro-question">BE MY BOYFRIEND FOREVER? 🥺👉👈</h1>
+            <p class="intro-subtext">Choose your answer below to unlock your special National Boyfriend Day surprise! 💕
+            </p>
+
+            <div class="intro-options">
+                <button class="intro-btn btn-option-a" onclick="answerIntroQuestion('A')">
+                    <span class="badge-letter">A</span>
+                    <span class="btn-text">YES!! 💖</span>
+                </button>
+                <button class="intro-btn btn-option-b" onclick="answerIntroQuestion('B')">
+                    <span class="badge-letter">B</span>
+                    <span class="btn-text">OF COURSE YESSSS!! 🥰✨</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Background Canvas for Heart Particles -->
+    <canvas id="heartCanvas"></canvas>
+
+    <!-- Ambient Music & Control Bar -->
+    <div class="audio-control-wrapper">
+        <button id="musicToggleBtn" class="glass-pill-btn" aria-label="Toggle Romantic Music">
+            <i class="fa-solid fa-music music-icon"></i>
+            <span class="music-label">Romantic Melody: OFF</span>
+            <div class="sound-wave hidden" id="soundWave">
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </button>
+        <button id="customizeNamesBtn" class="glass-pill-btn alt-btn" title="Customize Names & Date">
+            <i class="fa-solid fa-pen-to-square"></i> Customize
+        </button>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar glass-nav">
+        <div class="nav-logo">
+            <span class="heart-pulse">❤️</span> Us Forever
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero"><i class="fa-solid fa-heart"></i> Home</a></li>
+            <li><a href="#letter-section"><i class="fa-solid fa-envelope-open-text"></i> Love Letter</a></li>
+            <li><a href="#reasons"><i class="fa-solid fa-star"></i> Why I Love You</a></li>
+            <li><a href="#memories"><i class="fa-solid fa-camera-retro"></i> Memories</a></li>
+            <li><a href="#coupons"><i class="fa-solid fa-ticket"></i> Coupons</a></li>
+            <li><a href="#quiz"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i> Happy National Boyfriend Day <i class="fa-solid fa-sparkles"></i>
+            </div>
+
+            <!-- Hero Wish Section Grid (Title + Image Beside It) -->
+            <div class="hero-wish-grid">
+                <div class="hero-wish-text-content">
+                    <h1 class="hero-title">
+                        Happy National Boyfriend Day <br>
+                        <span class="highlight-text" id="boyfriendNameDisplay">My Love <3< /span>
+                    </h1>
+
+                    <div class="hero-love-quote-box glass-card">
+                        <i class="fa-solid fa-heart quote-heart-icon"></i>
+                        <p class="hero-quote-text">
+                            "Might came late in your life but will stay longer than your expectations love you and will
+                            do forever" ❤️
+                        </p>
+                    </div>
+
+                    <div class="hero-message-card glass-card">
+                        <p class="hero-message-paragraph">
+                            I know your busy schedule, know how much you work hard for your life. I understand and even try to cooperate with you all the time and will do always not just for few days its forever. I promise to be with you forever! Stand by your side in every situation being your bestfriend. Always feel free to share every problem with me your every problems I may not solve anything but I will stay by your side as I promise <span class="heart-pulse">❤️</span>. Luckily I matched with you that day, will never regret installing Hinge! Never ever overthink much I love youuuu!! 💕✨
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hero-wish-image-container">
+                    <div class="polaroid-card hero-polaroid">
+                        <div class="polaroid-img-wrapper">
+                            <img src="assets/couple_photo.jpg" alt="Happy National Boyfriend Day My Love"
+                                class="polaroid-img">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>You & Me Forever 💕</span>
+                            <small>National Boyfriend Day 2026</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Love Timer -->
+            <div class="love-timer-card glass-card">
+                <div class="timer-header">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                    <h3>Time We've Been In Love</h3>
+                    <button class="edit-date-mini" id="editDateBtn" title="Set Relationship Start Date"><i
+                            class="fa-solid fa-gear"></i></button>
+                </div>
+                <div class="timer-grid">
+                    <div class="timer-box">
+                        <span id="daysNum">000</span>
+                        <label>Days</label>
+                    </div>
+                    <div class="timer-box">
+                        <span id="hoursNum">00</span>
+                        <label>Hours</label>
+                    </div>
+                    <div class="timer-box">
+                        <span id="minutesNum">00</span>
+                        <label>Minutes</label>
+                    </div>
+                    <div class="timer-box">
+                        <span id="secondsNum">00</span>
+                        <label>Seconds</label>
+                    </div>
+                </div>
+                <p class="timer-footnote" id="timerFootnote">...and counting every second with you! 💖</p>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="scrollToSection('letter-section')">
+                    <i class="fa-solid fa-envelope-open-text"></i> Open Love Letter
+                </button>
+                <button class="btn btn-secondary" id="hugBtn">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Send Instant Virtual Hug 🤗
+                </button>
+                <button class="btn btn-accent" id="missYouBtn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Click If You Miss Me 💌
+                </button>
+            </div>
+        </section>
+
+        <!-- Unfolding Love Letter Section -->
+        <section id="letter-section" class="section-container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-envelope-open"></i> A Special Letter For You</h2>
+                <p>Click the envelope below to open your custom boyfriend day message!</p>
+            </div>
+
+            <div class="envelope-wrapper">
+                <div class="envelope" id="envelope">
+                    <div class="flap top-flap"></div>
+                    <div class="pocket"></div>
+                    <div class="wax-seal" id="waxSeal">
+                        <span>❤️</span>
+                        <small>TAP TO OPEN</small>
+                    </div>
+
+                    <div class="letter-paper" id="letterPaper">
+                        <div class="letter-content">
+                            <span class="letter-date" id="letterDateText">October 3rd</span>
+                            <h3 class="letter-salutation">My Dearest <span id="letterBoyfriendName">Love</span>,</h3>
+                            <p class="letter-body" id="typewriterBody">
+                                Happy National Boyfriend Day, My Love! 💖<br><br>
+                                I know your busy schedule, know how much you work hard for your life. I understand and even try to cooperate with you all the time and will do always not just for few days its forever. I promise to be with you forever! Stand by your side in every situation being your bestfriend.<br><br>
+                                Always feel free to share every problem with me your every problems I may not solve anything but I will stay by your side as I promise ❤️. Luckily I matched with you that day, will never regret installing Hinge! Never ever overthink much I love youuuu!! 💕<br><br>
+                                Forever & Always Yours, <br>
+                                <span class="signature" id="letterYourName">Your Sweetheart 💕</span>
+                            </p>
+                            <div class="letter-actions">
+                                <button class="btn btn-small" id="editLetterBtn"><i class="fa-solid fa-pen"></i>
+                                    Personalize Letter</button>
+                                <button class="btn btn-small btn-secondary" id="closeLetterBtn"><i
+                                        class="fa-solid fa-xmark"></i> Close Letter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reasons Why I Love You Section -->
+        <section id="reasons" class="section-container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-heart-circle-check"></i> Reasons Why You're The Best Boyfriend</h2>
+                <p>Just a few of the million reasons why my heart chose you!</p>
+            </div>
+
+            <div class="reasons-grid" id="reasonsGrid">
+                <!-- Card 1 -->
+                <div class="reason-card glass-card">
+                    <div class="reason-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
+                    <h3>Your Amazing Smile</h3>
+                    <p>Your smile effortlessly lights up my darkest days and instantly brings peace to my heart.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="reason-card glass-card">
+                    <div class="reason-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                    <h3>My Safe Haven</h3>
+                    <p>In your arms, I feel safe, protected, and unconditionally accepted for exactly who I am.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="reason-card glass-card">
+                    <div class="reason-icon"><i class="fa-solid fa-laugh-squint"></i></div>
+                    <h3>Best Laughs & Jokes</h3>
+                    <p>No one makes me laugh as hard as you do. Our inside jokes are my favorite memory bank.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="reason-card glass-card">
+                    <div class="reason-icon"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                    <h3>Your Kindness & Care</h3>
+                    <p>The gentle, thoughtful way you care for me and everyone around you inspires me every single day.
+                    </p>
+                </div>
+                <!-- Card 5 -->
+                <div class="reason-card glass-card">
+                    <div class="reason-icon"><i class="fa-solid fa-fire"></i></div>
+                    <h3>My Biggest Supporter</h3>
+                    <p>You always believe in me, encourage my dreams, and stand by my side through everything.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="reason-card glass-card">
+                    <div class="reason-icon"><i class="fa-solid fa-infinity"></i></div>
+                    <h3>Just Being YOU</h3>
+                    <p>Simply existing as your beautiful soul makes the world a thousand times warmer and happier.</p>
+                </div>
+            </div>
+
+            <div class="add-reason-wrapper">
+                <button class="btn btn-outline" id="addReasonBtn">
+                    <i class="fa-solid fa-plus"></i> Add Another Sweet Reason
+                </button>
+            </div>
+        </section>
+
+        <!-- Polaroid Memory Scrapbook Section -->
+        <section id="memories" class="section-container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-images"></i> Our Sweet Memories Gallery</h2>
+                <p>Snapshots of precious moments we've shared together!</p>
+            </div>
+
+            <div class="polaroid-gallery" id="polaroidGallery">
+                <!-- Polaroid 1 -->
+                <div class="polaroid-card">
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/couple_photo.jpg" alt="Our Special Memory Together" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span>Forever With You 💖</span>
+                        <small>Staying longer than expectations</small>
+                    </div>
+                </div>
+
+                <!-- Polaroid 2 -->
+                <div class="polaroid-card">
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/coffee.jpg" alt="Cozy Coffee Date" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span>Cozy Café Dates ☕</span>
+                        <small>Endless conversations & laughter</small>
+                    </div>
+                </div>
+
+                <!-- Polaroid 3 -->
+                <div class="polaroid-card">
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/stargazing.jpg" alt="Stargazing Night" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span>Under the Starlit Sky ✨</span>
+                        <small>Wishing on every shooting star for us</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="memory-upload-container">
+                <p class="small-text"><i class="fa-solid fa-lightbulb"></i> Tip: You can click any polaroid to zoom or
+                    add your own photos!</p>
+                <input type="file" id="photoUploadInput" accept="image/*" class="hidden-file-input">
+                <button class="btn btn-secondary" onclick="document.getElementById('photoUploadInput').click()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Our Real Photo
+                </button>
+            </div>
+        </section>
+
+        <!-- Redeemable Love Coupons Section -->
+        <section id="coupons" class="section-container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-ticket-simple"></i> Boyfriend Day Love Coupons</h2>
+                <p>Click "Redeem" to claim your special perks! Valid forever with zero expiration date.</p>
+            </div>
+
+            <div class="coupons-grid">
+                <!-- Coupon 1 -->
+                <div class="coupon-card glass-card">
+                    <div class="coupon-badge">OFFICIAL PASS</div>
+                    <div class="coupon-icon"><i class="fa-solid fa-spa"></i></div>
+                    <h3>1x Full Back & Shoulder Massage</h3>
+                    <p>Relaxing massage with warm oil & favorite music.</p>
+                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Full Massage')">Redeem Coupon
+                        🎟️</button>
+                </div>
+
+                <!-- Coupon 2 -->
+                <div class="coupon-card glass-card">
+                    <div class="coupon-badge">OFFICIAL PASS</div>
+                    <div class="coupon-icon"><i class="fa-solid fa-film"></i></div>
+                    <h3>1x Movie Night & Favorite Snacks</h3>
+                    <p>You pick the movie, I get your favorite treats!</p>
+                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Movie Night')">Redeem Coupon
+                        🎟️</button>
+                </div>
+
+                <!-- Coupon 3 -->
+                <div class="coupon-card glass-card">
+                    <div class="coupon-badge">SPECIAL PASS</div>
+                    <div class="coupon-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <h3>1x Win Any Playful Argument</h3>
+                    <p>Instant victory ticket! No questions asked.</p>
+                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Win Any Argument')">Redeem Coupon
+                        🎟️</button>
+                </div>
+
+                <!-- Coupon 4 -->
+                <div class="coupon-card glass-card">
+                    <div class="coupon-badge">VIP PASS</div>
+                    <div class="coupon-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <h3>1x Favorite Homemade Meal</h3>
+                    <p>Cooked with 100% love & extra dessert!</p>
+                    <button class="btn coupon-btn" onclick="redeemCoupon(this, 'Homemade Meal')">Redeem Coupon
+                        🎟️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Love Quiz Section -->
+        <section id="quiz" class="section-container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-heart-pulse"></i> "How Well Do You Know Us?" Quiz</h2>
+                <p>Let's test your love trivia! Pick your answers below.</p>
+            </div>
+
+            <div class="quiz-card glass-card" id="quizContainer">
+                <div class="quiz-progress">
+                    <span id="quizStepText">Question 1 of 3</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="quizProgressBar"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body" id="quizBody">
+                    <!-- Dynamic Question Loaded Here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-heart">Made with endless love <span class="heart-pulse">❤️</span> for Boyfriend Day
+                    2026</p>
+                <p class="footer-subtext">You are my favorite happy place.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Customization Modal -->
+    <div class="modal-overlay" id="customModal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <h3><i class="fa-solid fa-sliders"></i> Personalize Your Website</h3>
+            <form id="customizeForm">
+                <div class="form-group">
+                    <label for="boyfriendInput">Boyfriend's Name / Nickname:</label>
+                    <input type="text" id="boyfriendInput" value="My Love"
+                        placeholder="e.g. Alex / Handsome / My Prince">
+                </div>
+                <div class="form-group">
+                    <label for="yourNameInput">Your Name / Nickname:</label>
+                    <input type="text" id="yourNameInput" value="Your Sweetheart" placeholder="e.g. Maya / Your Babe">
+                </div>
+                <div class="form-group">
+                    <label for="startDateInput">Relationship Start Date:</label>
+                    <input type="date" id="startDateInput" value="2024-01-01">
+                </div>
+                <button type="submit" class="btn btn-primary full-width">Save & Apply Magic ✨</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Letter Modal -->
+    <div class="modal-overlay" id="letterModal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="closeLetterModalBtn">&times;</button>
+            <h3><i class="fa-solid fa-pen-nib"></i> Edit Love Letter</h3>
+            <div class="form-group">
+                <label for="customLetterText">Your Custom Love Message:</label>
+                <textarea id="customLetterText" rows="6" placeholder="Write your heartfelt message here..."></textarea>
+            </div>
+            <button class="btn btn-primary full-width" id="saveLetterBtn">Update Letter 💌</button>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="modal-overlay" id="lightboxModal">
+        <div class="modal-content glass-card lightbox-content">
+            <button class="modal-close" id="closeLightboxBtn">&times;</button>
+            <img src="" id="lightboxImg" alt="Enlarged Memory">
+            <p id="lightboxCaption" class="lightbox-caption-text"></p>
+        </div>
+    </div>
+
+    <!-- Virtual Hug / Miss You Alert Toast / Popup -->
+    <div class="toast-popup" id="toastPopup">
+        <div class="toast-icon" id="toastIcon">🤗</div>
+        <div class="toast-text">
+            <h4 id="toastTitle">Virtual Hug Sent!</h4>
+            <p id="toastMessage">Hold tight! Sending 10000+ warm cozy hugs across the screen! ❤️</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
