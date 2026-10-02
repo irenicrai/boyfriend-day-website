@@ -1141,14 +1141,20 @@ main {
     margin-top: 80px;
 }
 
-.footer-heart {
-    font-size: 1.1rem;
-    color: var(--text-primary);
+.footer-rai-title {
+    font-family: var(--font-handwriting);
+    font-size: 2.8rem;
+    color: var(--rose-gold);
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #ffd166 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    letter-spacing: 1px;
 }
 
 .footer-subtext {
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     margin-top: 6px;
 }
 
