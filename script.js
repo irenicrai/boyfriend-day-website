@@ -159,11 +159,40 @@ function updateTimerDisplay() {
 }
 
 /* ==========================================================================
-   3. ROMANTIC WEB AUDIO SYNTHESIZER MELODY
+   3. ROMANTIC "TUM HO TOH" AUDIO PLAYER (OFFICIAL SONG + SYNTH FALLBACK)
    ========================================================================== */
 let audioCtx = null;
 let isMusicPlaying = false;
 let musicInterval = null;
+let ytPlayer = null;
+let isYtReady = false;
+
+// Load YouTube Iframe API asynchronously
+(function loadYouTubeAPI() {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    if (firstScriptTag && firstScriptTag.parentNode) {
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+})();
+
+window.onYouTubeIframeAPIReady = function() {
+    ytPlayer = new YT.Player('ytPlayer', {
+        height: '1',
+        width: '1',
+        videoId: 'rOUuGvJkBrQ', // Official "Tum Ho Toh" - Saiyaara (Vishal Mishra)
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'loop': 1,
+            'playlist': 'rOUuGvJkBrQ'
+        },
+        events: {
+            'onReady': () => { isYtReady = true; }
+        }
+    });
+};
 
 function initAudioSynthesizer() {
     const musicBtn = document.getElementById('musicToggleBtn');
@@ -175,7 +204,6 @@ function initAudioSynthesizer() {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             audioCtx = new AudioContext();
         }
-
         if (audioCtx.state === 'suspended') {
             audioCtx.resume();
         }
@@ -185,10 +213,19 @@ function initAudioSynthesizer() {
         if (isMusicPlaying) {
             musicLabel.textContent = 'Tum Ho Toh 🎵: ON';
             soundWave.classList.remove('hidden');
-            startTumHoTohMelody();
+            
+            if (ytPlayer && isYtReady && typeof ytPlayer.playVideo === 'function') {
+                ytPlayer.playVideo();
+            } else {
+                startTumHoTohMelody();
+            }
         } else {
             musicLabel.textContent = 'Tum Ho Toh 🎵: OFF';
             soundWave.classList.add('hidden');
+            
+            if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+                ytPlayer.pauseVideo();
+            }
             stopTumHoTohMelody();
         }
     });

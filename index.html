@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
 </head>
 
 <body>
@@ -54,6 +54,11 @@
 
     <!-- Floating Background Canvas for Heart Particles -->
     <canvas id="heartCanvas"></canvas>
+
+    <!-- Hidden YouTube Audio Player Container for Tum Ho Toh -->
+    <div id="youtubeAudioPlayerContainer" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; overflow: hidden; top: -9999px;">
+        <div id="ytPlayer"></div>
+    </div>
 
     <!-- Ambient Music & Control Bar -->
     <div class="audio-control-wrapper">
@@ -237,7 +242,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=7"></script>
 </body>
 
 </html>
