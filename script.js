@@ -131,12 +131,15 @@ function initLoveTimer() {
 }
 
 function updateTimerDisplay() {
+    const daysEl = document.getElementById('daysNum');
+    if (!daysEl) return;
+
     const startDate = new Date(relationshipStartDate);
     const now = new Date();
     const diffMs = now - startDate;
 
     if (isNaN(diffMs) || diffMs < 0) {
-        document.getElementById('daysNum').textContent = '000';
+        daysEl.textContent = '000';
         document.getElementById('hoursNum').textContent = '00';
         document.getElementById('minutesNum').textContent = '00';
         document.getElementById('secondsNum').textContent = '00';
@@ -149,7 +152,7 @@ function updateTimerDisplay() {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    document.getElementById('daysNum').textContent = String(days).padStart(3, '0');
+    daysEl.textContent = String(days).padStart(3, '0');
     document.getElementById('hoursNum').textContent = String(hours).padStart(2, '0');
     document.getElementById('minutesNum').textContent = String(minutes).padStart(2, '0');
     document.getElementById('secondsNum').textContent = String(seconds).padStart(2, '0');
@@ -605,21 +608,26 @@ function initCustomizationSystem() {
     });
 
     // Add Reason Button
-    document.getElementById('addReasonBtn').addEventListener('click', () => {
-        const reasonText = prompt("Type a special reason why you love him:");
-        if (reasonText && reasonText.trim()) {
-            const grid = document.getElementById('reasonsGrid');
-            const card = document.createElement('div');
-            card.className = 'reason-card glass-card';
-            card.innerHTML = `
-                <div class="reason-icon"><i class="fa-solid fa-heart"></i></div>
-                <h3>Special Reason</h3>
-                <p>${reasonText.trim()}</p>
-            `;
-            grid.appendChild(card);
-            showToast('❤️ Reason Added!', 'Your custom reason has been added to the list!');
-        }
-    });
+    const addReasonBtn = document.getElementById('addReasonBtn');
+    if (addReasonBtn) {
+        addReasonBtn.addEventListener('click', () => {
+            const reasonText = prompt("Type a special reason why you love him:");
+            if (reasonText && reasonText.trim()) {
+                const grid = document.getElementById('reasonsGrid');
+                if (grid) {
+                    const card = document.createElement('div');
+                    card.className = 'reason-card glass-card';
+                    card.innerHTML = `
+                        <div class="reason-icon"><i class="fa-solid fa-heart"></i></div>
+                        <h3>Special Reason</h3>
+                        <p>${reasonText.trim()}</p>
+                    `;
+                    grid.appendChild(card);
+                    showToast('❤️ Reason Added!', 'Your custom reason has been added to the list!');
+                }
+            }
+        });
+    }
 }
 
 function updateBoyfriendName(name) {
